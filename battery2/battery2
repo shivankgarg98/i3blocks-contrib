@@ -36,7 +36,7 @@ else:
                 time = re.match(r"(\d+):(\d+)", time)
                 if time:
                     time = ":".join(time.groups())
-                    timeleft = " ({})".format(time)
+                    timeleft = " ⏳{}".format(time)
                 else:
                     timeleft = ""
 
@@ -67,6 +67,8 @@ else:
 
     if state == "Discharging":
         fulltext = FA_BATTERY + " "
+        if percentleft < 15:
+            fulltext = "🪫" + " "
     elif state == "Full":
         fulltext = FA_PLUG + " "
         timeleft = ""
@@ -94,13 +96,13 @@ else:
             return config.get("color_70", "#FFFF33")
         if percent < 80:
             return config.get("color_80", "#FFFF66")
-        return config.get("color_full", "#FFFFFF")
+        return config.get("color_full", "#00FF00")
 
     form =  '<span color="{}">{}%</span>'
     fulltext += form.format(color(percentleft), percentleft)
     fulltext += timeleft
 
 print(fulltext)
-print(fulltext)
+
 if percentleft < 10:
     exit(33)

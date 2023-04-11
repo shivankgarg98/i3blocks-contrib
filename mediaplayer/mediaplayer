@@ -122,13 +122,14 @@ sub mpd {
 sub playerctl {
     buttons('playerctl');
 
-    my $artist = qx(playerctl $player_arg metadata artist 2>/dev/null);
-    chomp $artist;
-    # exit status will be nonzero when playerctl cannot find your player
-    exit(0) if $? || $artist eq '(null)';
-
-    push(@metadata, $artist) if $artist;
-
+    #  uncomment this to show artist
+    #    my $artist = qx(playerctl $player_arg metadata artist 2>/dev/null);
+    #    chomp $artist;
+    #    # exit status will be nonzero when playerctl cannot find your player
+    #    exit(0) if $? || $artist eq '(null)';
+    #
+    #    push(@metadata, $artist) if $artist;
+    #
     my $title = qx(playerctl $player_arg metadata title);
     exit(0) if $? || $title eq '(null)';
 

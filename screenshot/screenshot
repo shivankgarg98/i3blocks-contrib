@@ -16,8 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 FORMAT=${FORMAT:-png}
-IS_SAVE=${IS_SAVE:-false}
-SAVE_DIR=${SAVE_DIR:-$HOME}
+IS_SAVE=${IS_SAVE:-true}
+SAVE_DIR=${SAVE_DIR:-$HOME/screenshots}
+BLOCK_BUTTON=1
 
 filename=$SAVE_DIR/screenshot_$(date "+%Y%m%d_%H%M%S").$FORMAT
 
